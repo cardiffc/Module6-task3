@@ -9,9 +9,6 @@ public abstract class Client {
         this.accNumber = accNumber;
         this.accAmount = accAmount;
     }
-    public int getAccNumber() {
-        return accNumber;
-    }
     public void setAccAmount (double amount)
     {
         if (amount >= 0 || (amount < 0 && Math.abs(amount) <= this.accAmount)) {

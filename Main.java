@@ -2,6 +2,7 @@ import Clients.Client;
 import Clients.ClientIp;
 import Clients.ClientLLC;
 import Clients.ClientPerson;
+import jdk.jfr.DataAmount;
 
 import java.util.Scanner;
 
@@ -14,9 +15,18 @@ public class Main {
             System.out.println("Выберите тип клиента:\n1 - ИП\n2 - Юридическое лицо\n3 - Физическое лицо ");
             Scanner scanner = new Scanner(System.in);
             String clientType = scanner.nextLine();
+            if (!checkInput(clientType))
+            {
+                getErrorMsg();
+                continue;
+            }
             System.out.println("Выберите операцию:\n1 - Пополнить счет\n2 - Снять деньги\n3 - Посмореть баланс");
             String operType = scanner.nextLine();
-
+            if (!checkInput(operType))
+            {
+                getErrorMsg();
+                continue;
+            }
             if (clientType.equals("1")) {
                 if (operType.equals("1") || operType.equals("2")) {
                     caseMoneyInOut(ipClient, operType);
@@ -38,7 +48,6 @@ public class Main {
                 } else {
                     getBalance(perClient);
                 }
-
             }
         }
     }
@@ -54,12 +63,18 @@ public class Main {
     {
         System.out.println("Введите сумму:");
         Scanner scanner = new Scanner(System.in);
-        Double amount = scanner.nextDouble();
-        if (choice.equals("1"))
+        String strAmount = scanner.nextLine();
+        if(!strAmount.matches("\\d+"))
         {
-        client.setAccAmount(amount);
-        } else if (choice.equals("2")){
-            client.setAccAmount(-amount);
+            getErrorMsg();
+        }
+        else {
+            double amount = Double.parseDouble(strAmount);
+            if (choice.equals("1")) {
+                client.setAccAmount(amount);
+            } else if (choice.equals("2")) {
+                client.setAccAmount(-amount);
+            }
         }
     }
     private static void getBalance (Client client)

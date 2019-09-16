@@ -13,7 +13,7 @@ public class ClientIp extends Client {
         double actualAmount;
         if (amount > 0 && amount < 1000)
         {
-          actualAmount = amount - (amount / 100) * COMMISSION;
+            actualAmount = amount - (amount / 100) * COMMISSION;
         }
         else if (amount > 0 && amount >= 1000)
         {

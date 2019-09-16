@@ -5,7 +5,6 @@ public class ClientLLC extends Client {
     public ClientLLC(int accNumber, double accAmount) {
         super(accNumber, accAmount);
     }
-
     public void setAccAmount (double amount)
     {
         double actualAmount;
