@@ -7,7 +7,7 @@ import jdk.jfr.DataAmount;
 import java.util.Scanner;
 
 public class Main {
-     public static void main(String[] args) {
+    public static void main(String[] args) {
         Client ipClient = new ClientIp(1, 0.);
         Client perClient = new ClientPerson(2, 0.);
         Client llcClient = new ClientLLC(3, 0.);

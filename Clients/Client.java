@@ -11,11 +11,22 @@ public abstract class Client {
     }
     public void setAccAmount (double amount)
     {
-        if (amount >= 0 || (amount < 0 && Math.abs(amount) <= this.accAmount)) {
-            this.accAmount += amount;
-        } else
+        if (amount >= 0)
         {
-            System.out.println("Недостаточно средств!");
+            this.accAmount += amount;
+        } else {
+            setWdAmount(amount);
+        }
+    }
+
+    public void setWdAmount (double amount)
+    {
+        if (Math.abs(amount) <= this.accAmount)
+        {
+            this.accAmount += amount;
+        }
+        else {
+            System.out.println("Недостаточно средств");
         }
     }
     public double getAccAmount ()

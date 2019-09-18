@@ -5,17 +5,9 @@ public class ClientLLC extends Client {
     public ClientLLC(int accNumber, double accAmount) {
         super(accNumber, accAmount);
     }
-    public void setAccAmount (double amount)
-    {
-        double actualAmount;
-        if (amount < 0)
-        {
-            actualAmount = amount + (amount / 100) * COMISSION;
-        }
-        else {
-            actualAmount = amount;
-        }
+
+    public void setAccAmount (double amount) {
+        double actualAmount = amount < 0 ? (actualAmount = amount + (amount / 100) * COMISSION) : amount ;
         super.setAccAmount(actualAmount);
     }
-
 }
